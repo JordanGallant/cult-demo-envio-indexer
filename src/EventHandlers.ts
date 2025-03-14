@@ -23,6 +23,15 @@ import {
   CultRewards_Withdraw,
 } from "generated";
 
+
+CultFactory.CultTokenCreated.contractRegister(
+  async ({ event, context }) => {
+     
+    context.addCult(event.params.tokenAddress);
+  },
+  { preRegisterDynamicContracts: true }
+);
+
 Cult.Approval.handler(async ({ event, context }) => {
   const entity: Cult_Approval = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
