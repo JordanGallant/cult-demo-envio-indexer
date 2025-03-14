@@ -1,0 +1,139 @@
+type Cult_Approval {
+  id: ID!
+  owner: String!
+  spender: String!
+  value: BigInt!
+}
+
+type Cult_CultMarketGraduated {
+  id: ID!
+  tokenAddress: String!
+  poolAddress: String!
+  totalEthLiquidity: BigInt!
+  totalTokenLiquidity: BigInt!
+  lpPositionId: BigInt!
+  marketType: BigInt!
+}
+
+type Cult_CultTokenBuy {
+  id: ID!
+  buyer: String!
+  recipient: String!
+  orderReferrer: String!
+  totalEth: BigInt!
+  ethFee: BigInt!
+  ethSold: BigInt!
+  tokensBought: BigInt!
+  buyerTokenBalance: BigInt!
+  comment: String!
+  totalSupply: BigInt!
+  marketType: BigInt!
+}
+
+type Cult_CultTokenFees {
+  id: ID!
+  tokenCreator: String!
+  orderReferrer: String!
+  protocolFeeRecipient: String!
+  tokenCreatorFee: BigInt!
+  orderReferrerFee: BigInt!
+  protocolFee: BigInt!
+}
+
+type Cult_CultTokenSecondaryRewards {
+  id: ID!
+  rewards_0: BigInt!
+  rewards_1: BigInt!
+  rewards_2: BigInt!
+  rewards_3: BigInt!
+  rewards_4: BigInt!
+  rewards_5: BigInt!
+}
+
+type Cult_CultTokenSell {
+  id: ID!
+  seller: String!
+  recipient: String!
+  orderReferrer: String!
+  totalEth: BigInt!
+  ethFee: BigInt!
+  ethBought: BigInt!
+  tokensSold: BigInt!
+  sellerTokenBalance: BigInt!
+  comment: String!
+  totalSupply: BigInt!
+  marketType: BigInt!
+}
+
+type Cult_CultTokenTransfer {
+  id: ID!
+  from: String!
+  to: String!
+  amount: BigInt!
+  fromTokenBalance: BigInt!
+  toTokenBalance: BigInt!
+  totalSupply: BigInt!
+}
+
+type Cult_Initialized {
+  id: ID!
+  version: BigInt!
+}
+
+type Cult_Transfer {
+  id: ID!
+  from: String!
+  to: String!
+  value: BigInt!
+}
+
+type CultFactory_CultTokenCreated {
+  id: ID!
+  factoryAddress: String!
+  tokenCreator: String!
+  protocolFeeRecipient: String!
+  bondingCurve: String!
+  tokenURI: String!
+  name: String!
+  symbol: String!
+  tokenAddress: String!
+  poolAddress: String!
+  airdropContract: String!
+}
+
+type CultFactory_Initialized {
+  id: ID!
+  version: BigInt!
+}
+
+type CultFactory_OwnershipTransferred {
+  id: ID!
+  previousOwner: String!
+  newOwner: String!
+}
+
+type CultFactory_Upgraded {
+  id: ID!
+  implementation: String!
+}
+
+type CultRewards_Deposit {
+  id: ID!
+  depositor: String!
+  to: String!
+  reason: String!
+  value: BigInt!
+  comment: String!
+}
+
+type CultRewards_EIP712DomainChanged {
+  id: ID!
+}
+
+type CultRewards_Withdraw {
+  id: ID!
+  owner: String!
+  to: String!
+  amount: BigInt!
+}
+

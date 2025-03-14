@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=./node_modules/envio/evm.schema.json
+name: cult
+networks:
+- id: 10143
+  start_block: 0
+  contracts:
+  - name: CultFactory
+    address:
+    - 0x72c06FFD9015aCd5314C4f550DcA15a2055be9c4
+    handler: src/EventHandlers.ts
+    events:
+    - event: CultTokenCreated(address indexed factoryAddress, address indexed tokenCreator, address protocolFeeRecipient, address bondingCurve, string tokenURI, string name, string symbol, address tokenAddress, address poolAddress, address airdropContract)
+    - event: Initialized(uint64 version)
+    - event: OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
+    - event: Upgraded(address indexed implementation)
+  - name: Cult
+    address:
+    - 0x136C67fAF6B0291Efffc2858d9C7d93f57929E26
+    handler: src/EventHandlers.ts
+    events:
+    - event: Approval(address indexed owner, address indexed spender, uint256 value)
+    - event: CultMarketGraduated(address indexed tokenAddress, address indexed poolAddress, uint256 totalEthLiquidity, uint256 totalTokenLiquidity, uint256 lpPositionId, uint8 marketType)
+    - event: CultTokenBuy(address indexed buyer, address indexed recipient, address indexed orderReferrer, uint256 totalEth, uint256 ethFee, uint256 ethSold, uint256 tokensBought, uint256 buyerTokenBalance, string comment, uint256 totalSupply, uint8 marketType)
+    - event: CultTokenFees(address indexed tokenCreator, address indexed orderReferrer, address protocolFeeRecipient, uint256 tokenCreatorFee, uint256 orderReferrerFee, uint256 protocolFee)
+    - event: CultTokenSecondaryRewards((uint256,uint256,uint256,uint256,uint256,uint256) rewards)
+    - event: CultTokenSell(address indexed seller, address indexed recipient, address indexed orderReferrer, uint256 totalEth, uint256 ethFee, uint256 ethBought, uint256 tokensSold, uint256 sellerTokenBalance, string comment, uint256 totalSupply, uint8 marketType)
+    - event: CultTokenTransfer(address indexed from, address indexed to, uint256 amount, uint256 fromTokenBalance, uint256 toTokenBalance, uint256 totalSupply)
+    - event: Initialized(uint64 version)
+    - event: Transfer(address indexed from, address indexed to, uint256 value)
+  - name: CultRewards
+    address:
+    - 0x96b889782F9E61eA0290296048a2AC2efaD02Ff2
+    handler: src/EventHandlers.ts
+    events:
+    - event: Deposit(address depositor, address to, bytes4 reason, uint256 value, string comment)
+    - event: EIP712DomainChanged()
+    - event: Withdraw(address owner, address to, uint256 amount)
+unordered_multichain_mode: true
