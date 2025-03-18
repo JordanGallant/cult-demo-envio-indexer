@@ -21,6 +21,11 @@ import {
   CultRewards_Deposit,
   CultRewards_EIP712DomainChanged,
   CultRewards_Withdraw,
+  Airdrop,
+  Airdrop_AirdropContractInitialized,
+  Airdrop_Initialized,
+  Airdrop_MerkleRootSet,
+  Airdrop_TokensClaimed,
 } from "generated";
 
 
@@ -28,6 +33,7 @@ CultFactory.CultTokenCreated.contractRegister(
   async ({ event, context }) => {
      
     context.addCult(event.params.tokenAddress);
+    context.addAirdrop(event.params.airdropContract);
   },
   { preRegisterDynamicContracts: true }
 );
@@ -245,4 +251,46 @@ CultRewards.Withdraw.handler(async ({ event, context }) => {
   };
 
   context.CultRewards_Withdraw.set(entity);
+});
+
+Airdrop.AirdropContractInitialized.handler(async ({ event, context }) => {
+  const entity: Airdrop_AirdropContractInitialized = {
+    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
+    token: event.params.token,
+    createdBy: event.params.createdBy,
+    merkleRoots: event.params.merkleRoots,
+    amount: event.params.amount,
+  };
+
+  context.Airdrop_AirdropContractInitialized.set(entity);
+});
+
+Airdrop.Initialized.handler(async ({ event, context }) => {
+  const entity: Airdrop_Initialized = {
+    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
+    version: event.params.version,
+  };
+
+  context.Airdrop_Initialized.set(entity);
+});
+
+Airdrop.MerkleRootSet.handler(async ({ event, context }) => {
+  const entity: Airdrop_MerkleRootSet = {
+    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
+    token: event.params.token,
+    merkleRoots: event.params.merkleRoots,
+  };
+
+  context.Airdrop_MerkleRootSet.set(entity);
+});
+
+Airdrop.TokensClaimed.handler(async ({ event, context }) => {
+  const entity: Airdrop_TokensClaimed = {
+    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
+    token: event.params.token,
+    recipient: event.params.recipient,
+    amount: event.params.amount,
+  };
+
+  context.Airdrop_TokensClaimed.set(entity);
 });

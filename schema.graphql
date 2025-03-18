@@ -137,3 +137,30 @@ type CultRewards_Withdraw {
   amount: BigInt!
 }
 
+type Airdrop_AirdropContractInitialized {
+  id: ID!
+  token: String!
+  createdBy: String!
+  merkleRoots: [String!]!
+  amount: BigInt!
+}
+
+type Airdrop_Initialized {
+  id: ID!
+  version: BigInt!
+}
+
+type Airdrop_MerkleRootSet {
+  id: ID!
+  token: String!
+  merkleRoots: [String!]!
+}
+
+type Airdrop_TokensClaimed {
+  id: ID!
+  token: String!
+  recipient: String!
+  amount: BigInt!
+}
+
+

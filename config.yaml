@@ -14,8 +14,6 @@ networks:
     - event: OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
     - event: Upgraded(address indexed implementation)
   - name: Cult
-    address:
-    - 0x136C67fAF6B0291Efffc2858d9C7d93f57929E26
     handler: src/EventHandlers.ts
     events:
     - event: Approval(address indexed owner, address indexed spender, uint256 value)
@@ -27,6 +25,13 @@ networks:
     - event: CultTokenTransfer(address indexed from, address indexed to, uint256 amount, uint256 fromTokenBalance, uint256 toTokenBalance, uint256 totalSupply)
     - event: Initialized(uint64 version)
     - event: Transfer(address indexed from, address indexed to, uint256 value)
+  - name: Airdrop
+    handler: src/EventHandlers.ts
+    events:
+    - event: AirdropContractInitialized(address indexed token, address indexed createdBy, bytes32[] merkleRoots, uint256 amount)
+    - event: Initialized(uint64 version)
+    - event: MerkleRootSet(address indexed token, bytes32[] merkleRoots)
+    - event: TokensClaimed(address indexed token, address indexed recipient, uint256 amount)
   - name: CultRewards
     address:
     - 0x96b889782F9E61eA0290296048a2AC2efaD02Ff2
@@ -35,4 +40,3 @@ networks:
     - event: Deposit(address depositor, address to, bytes4 reason, uint256 value, string comment)
     - event: EIP712DomainChanged()
     - event: Withdraw(address owner, address to, uint256 amount)
-unordered_multichain_mode: true
